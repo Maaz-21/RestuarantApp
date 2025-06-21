@@ -297,6 +297,7 @@ const FoodDetails = () => {
                     <FavoriteBorderOutlined sx={{ fontSize: "22px" }} />
                   )
                 }
+                text = {favorite ? "Remove from Favorites" : "Add to Favorites"}
                 full
                 outlined
                 isLoading={favoriteLoading}

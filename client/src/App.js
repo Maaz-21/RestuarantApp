@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 import FoodDetails from "./pages/FoodDetails";
 import FoodListing from "./pages/FoodListing";
 import Orders from "./pages/Orders";
+import Contact from "./pages/Contact";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
@@ -42,6 +43,7 @@ function App() {
             <Route path="/dishes/:id" element={<FoodDetails />} />
             <Route path="/dishes" element={<FoodListing />} />
             <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
           {openAuth && (
             <Authentication setOpenAuth={setOpenAuth} openAuth={openAuth} />

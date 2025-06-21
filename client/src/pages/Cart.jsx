@@ -345,7 +345,7 @@ const Cart = () => {
                           </Details>
                         </Product>
                       </TableItem>
-                      <TableItem>${item?.product?.price?.org}</TableItem>
+                      <TableItem>₹{item?.product?.price?.org}</TableItem>
                       <TableItem>
                         <Counter>
                           <div
@@ -378,7 +378,7 @@ const Cart = () => {
                       </TableItem>
                       <TableItem>
                         <DeleteOutline
-                          sx={{ color: "red" }}
+                          sx={{ color: "red", cursor: "pointer" }}
                           onClick={() =>
                             removeCart(
                               item?.product?._id,
