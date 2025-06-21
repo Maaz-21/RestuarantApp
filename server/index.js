@@ -1,15 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import serverless from "serverless-http";
 import mongoose from "mongoose";
-import UserRoutes from "../routes/User.js";
-import FoodRoutes from "../routes/Food.js";
-import PaymentRoutes from "../routes/Payment.js";
+import UserRoutes from "./routes/User.js";
+import FoodRoutes from "./routes/Food.js";
+import PaymentRoutes from "./routes/Payment.js";
 dotenv.config();
 
 const app = express();
 
+// Connect DB only once per cold start
 let isConnected = false;
 const connectDB = async () => {
   if (isConnected) return;
@@ -39,7 +39,6 @@ app.get("/", async (req, res) => {
 app.use("/api/user/", UserRoutes);
 app.use("/api/food/", FoodRoutes);
 app.use("/api/payment/", PaymentRoutes); 
-
 // error handler
 app.use((err, req, res, next) => {
   const status = err.status || 500;
@@ -51,12 +50,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-// const PORT = process.env.PORT || 8080;
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-//   connectDB();
-// });
-// Connect DB before handling any requests
-await connectDB();
-
-export const handler = serverless(app);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  connectDB();
+});
