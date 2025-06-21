@@ -9,8 +9,11 @@ export const UserSignUp = async (data) => await API.post("/user/signup", data);
 export const UserSignIn = async (data) => await API.post("/user/signin", data);
 
 //products
-export const getAllProducts = async (filter) =>
-  await API.get(`/food?${filter}`, filter);
+export const getAllProducts = async (filter) => {
+  const url = filter ? `/food?${filter}` : `/food`;
+  return await API.get(url);
+};
+
 
 export const getProductDetails = async (id) => await API.get(`/food/${id}`);
 
