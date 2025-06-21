@@ -60,5 +60,3 @@ app.use((err, req, res, next) => {
 await connectDB();
 
 export const handler = serverless(app);
-
-module.exports = app;
